@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advance Birthday Wish</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0; /* Light gray background color */
+      color: #333; /* Dark text color */
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .container {
+      text-align: center;
+      padding: 20px;
+      color: #333; /* Dark text color */
+    }
+    h1 {
+      color: #e50914; /* Red color for heading */
+      font-size: 42px;
+      margin-top: 0;
+      border-bottom: 2px solid #e50914;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    #countdown {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+    p {
+      font-size: 20px;
+      color: #555; /* Slightly darker text color */
+      margin-bottom: 30px;
+    }
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .gallery-item {
+      width: 250px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft box shadow */
+      transition: transform 0.3s ease-in-out;
+      overflow: hidden;
+    }
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+    .gallery-img {
+      width: 100%;
+      border-bottom: 2px solid #e50914;
+    }
+    .photo-caption {
+      font-style: italic;
+      font-size: 16px;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #fff; /* White background color */
+      color: #666; /* Slightly darker text color */
+    }
+    .decorative-border {
+      background-color: #e50914;
+      padding: 10px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft box shadow */
+    }
+    .decorative-border h2 {
+      color: #fff;
+      font-size: 24px;
+      margin: 0;
+    }
+    /* Additional CSS */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+      #countdown {
+        font-size: 24px;
+      }
+      p {
+        font-size: 18px;
+      }
+      .gallery-item {
+        width: calc(50% - 20px); /* Two items per row */
+      }
+      .photo-caption {
+        font-size: 14px;
+      }
+    }
+    /* Fireworks Animation */
+    #fireworks {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fireworks Canvas -->
+  <canvas id="fireworks"></canvas>
+
+  <div class="container">
+    <img src="https://github.com/rohitkumar6207/BirthdayWish/blob/main/WhatsApp%20Image%202024-02-19%20at%2010.25.01_28ba22aa.jpg?raw=true" alt="Birthday Girl" width="300">
+    <div class="decorative-border">
+      <h2> Wishing you the happiest Birthday ever in advance...</h2>
+    </div>
+    
+    <div id="countdown"></div>
+    <p>Wishing you a fantastic birthday in advance! May this special day bring you joy, laughter, and all the wonderful things you deserve. Have an amazing year ahead!</p>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img class="gallery-img" src="https://github.com/rohitkumar6207/BirthdayWish/blob/main/WhatsApp%20Image%202024-02-19%20at%2010.41.29_28750b73.jpg?raw=true" alt="Birthday Girl 1">
+        <p class="photo-caption">Cheers to another year of fabulous adventures! Happy birthday!</p>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-img" src="https://github.com/rohitkumar6207/BirthdayWish/blob/main/WhatsApp%20Image%202024-02-19%20at%2010.25.00_dd50bc10.jpg?raw=true" alt="Birthday Girl 2">
+        <p class="photo-caption">Sending you love, hugs, and good vibes on your special day. Happy birthday!</p>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-img" src="https://github.com/rohitkumar6207/BirthdayWish/blob/main/WhatsApp%20Image%202024-02-19%20at%2010.25.00_80b337bf.jpg?raw=true" alt="Birthday Girl 3">
+        <p class="photo-caption">May your birthday be as bright and beautiful as you are! Wishing you all the happiness in the world.</p>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-img" src="https://github.com/rohitkumar6207/BirthdayWish/blob/main/WhatsApp%20Image%202024-02-19%20at%2010.25.00_26a04977.jpg?raw=true" alt="Birthday Girl 4">
+        <p class="photo-caption">To the most wonderful person on their birthday: You're amazing, you're loved, and you're cherished. Happy birthday!</p>
+      </div>
+    </div>
+    <h3>"Hey there! Just wanted to sneak in early and wish you the happiest of birthdays in advance! 🎉 May the days leading up to your special day be filled with anticipation, excitement, and joy. You deserve all the love, laughter, and blessings that come your way. Here's to making every moment count and creating unforgettable memories. Cheers to you, and may your birthday be as amazing as you are! 🎂🎈"</h3>
+    <center><h3>From :: Tera b##p </h3></center>
+    <center><h3>kya dekh raha hai 💕day or kitna wish chahiye ab
+    </h3></center>
+    
+  </div>
+
+  <script>
+    // Set the date for the birthday
+    const birthdayDate = new Date('2024-02-22T00:00:00');
+
+    // Update the countdown every second
+    const countdown = document.getElementById('countdown');
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = birthdayDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        countdown.innerHTML = "It's your birthday!";
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Fireworks Animation
+    const fireworks = document.getElementById('fireworks');
+    const ctx = fireworks.getContext('2d');
+    fireworks.width = window.innerWidth;
+    fireworks.height = window.innerHeight;
+
+    // Firework particles
+    class Particle {
+      constructor() {
+        this.x = fireworks.width / 2;
+        this.y = fireworks.height;
+        this.speed = Math.random() * 3 + 2;
+        this.angle = Math.random() * Math.PI * 2;
+        this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        this.radius = Math.random() * 2 + 1;
+        this.life = true;
+      }
+      update() {
+        this.x += Math.cos(this.angle) * this.speed;
+        this.y += Math.sin(this.angle) * this.speed + 0.1;
+        this.speed *= 0.99;
+        this.radius -= 0.02;
+        if (this.radius < 0) this.life = false;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    const particles = [];
+
+    function createParticles() {
+      for (let i = 0; i < 3; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function removeParticles() {
+      for (let i = particles.length - 1; i >= 0; i--) {
+        if (!particles[i].life) particles.splice(i, 1);
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, fireworks.width, fireworks.height);
+      particles.forEach((particle) => {
+        particle.update();
+        particle.draw();
+      });
+      removeParticles();
+      if (particles.length < 100) {
+        createParticles();
+      }
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+  </script>
+</body>
+</html>
